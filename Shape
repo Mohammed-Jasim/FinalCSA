@@ -1,0 +1,12 @@
+// Parent class
+class Shape {
+    protected String color;
+//Constructor for the Shape class
+    public Shape(String color) {
+        this.color = color;
+    }
+//Displays each object's color
+    public void display() {
+        System.out.println("Color: " + color);
+    }
+}
