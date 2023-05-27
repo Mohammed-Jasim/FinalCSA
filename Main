@@ -1,0 +1,50 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Circle> circles = new ArrayList<>();
+        String[] availableColors = {"blue", "red", "green", "yellow", "black", "white", "purple"};
+
+
+        // Loop to add circles
+        while (true) {
+            System.out.println("Available colors: " + Arrays.toString(availableColors));
+            System.out.print("Enter the color of the circle (or 'stop' to finish): ");
+            String color = scanner.nextLine();
+            //Stops the code if the user enters "stop"
+            if (color.equalsIgnoreCase("stop")) {
+                break;
+            }
+            //Makes the user input another color if it is not in the color list
+            if (!Arrays.asList(availableColors).contains(color)) {
+                System.out.println("Please choose a color from the available colors.");
+                continue;
+            }
+            //Retrieves the radius from the user
+            System.out.print("Enter the radius of the circle: ");
+            double radius = scanner.nextDouble();
+            scanner.nextLine();
+            //Makes a circle object and adds it to the arraylist
+            Circle circle = new Circle(color, radius);
+            circles.add(circle);
+        }
+
+        // Display all circles
+        System.out.println("\nCircles entered:");
+        for (Circle c : circles) {
+            c.display();
+            System.out.println("Area: " + c.calculateArea());
+            System.out.println("Was the program good? (y/n):");
+            String lebron = scanner.next();
+            if (lebron.equals("y")){
+                Circle.feedback(true);
+            }
+            else {
+                Circle.feedback(false);
+            }
+        }
+    }
+}
